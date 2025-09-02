@@ -35,6 +35,9 @@ int main() {
     if (CheckCollisionCircleRec(Vector2{ball.x, ball.y}, ball.radius, Rectangle{(float)player.x, (float)player.y, (float)player.width, (float)player.height})) {
       ball.speed_x *= -1;
       ball.speed_x -= 1;
+      if (ball.speed_y < 0) {
+        ball.speed_y -= 1;
+      } else ball.speed_y += 1;
     }
 
     if (CheckCollisionCircleRec(Vector2{ball.x, ball.y}, ball.radius, Rectangle{(float)cpu.x, (float)cpu.y, (float)cpu.width, (float)cpu.height})) {

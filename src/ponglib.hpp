@@ -91,10 +91,14 @@ public:
 
   void Update(int ball_y) {
     if (y + height/2 > ball_y) {
-      y = y - speed;
+      y -= speed;
     }
     if (y + height/2 <= ball_y) {
-      y = y + speed;
+      y += speed;
+    }
+
+    if (y >= GetScreenHeight() - height) {
+      y = GetScreenHeight() - height;
     }
   }
 
