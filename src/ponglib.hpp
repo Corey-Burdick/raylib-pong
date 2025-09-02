@@ -31,22 +31,24 @@ public:
     }
     if (x + radius >= GetScreenWidth()) {
       cpuScore += 1;
-      Reset();
+      Reset(false);
     }
     if (x - radius <= 0) {
       playerScore += 1;
-      Reset();
+      Reset(true);
     }
   }
 
-  void Reset() {
+  void Reset(bool didPlayerScore) {
     x = GetScreenWidth() / 2;
     y = GetScreenHeight() / 2;
-    if (speed_x > 0) {
+    if (didPlayerScore) {
       speed_x = 6;
+      speed_y = 6;
     }
-    if (speed_x < 0) {
+    if (!didPlayerScore) {
       speed_x = -6;
+      speed_y = -6;
     }
   }
 
