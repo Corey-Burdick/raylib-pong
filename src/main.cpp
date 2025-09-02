@@ -34,20 +34,22 @@ int main() {
     //Checking Collision
     if (CheckCollisionCircleRec(Vector2{ball.x, ball.y}, ball.radius, Rectangle{(float)player.x, (float)player.y, (float)player.width, (float)player.height})) {
       ball.speed_x *= -1;
-      ball.speed_x -= 1;
-      if (ball.speed_y < 0) {
-        ball.speed_y -= 1;
-      } else ball.speed_y += 1;
+      if (player.moving) {
+        ball.speed_x -= player.speed / 4;
+      }
     }
-
     if (CheckCollisionCircleRec(Vector2{ball.x, ball.y}, ball.radius, Rectangle{(float)cpu.x, (float)cpu.y, (float)cpu.width, (float)cpu.height})) {
       ball.speed_x *= -1;
-      ball.speed_x += 1;
+      if (cpu.moving) {
+        ball.speed_x += ball.speed_x / 4;
+      }
     }
     
     //Drawing
 
     ClearBackground(GRUVBOX_BG);
+    DrawRectangle(0, 0, GetScreenWidth() / 2, GetScreenHeight(), GRUVBOX_BLUE);
+    DrawRectangle(GetScreenWidth() / 2, 0, GetScreenWidth() / 2, GetScreenHeight(), GRUVBOX_AQUA);
     DrawCircle(0, GetScreenHeight() / 2, GetScreenWidth() / 4, GRUVBOX_DARKGREEN);
     DrawCircle(0, GetScreenHeight() / 2, GetScreenWidth() / 5, GRUVBOX_GREEN);
     DrawRectangle(GetScreenWidth() / 2 - 5, 0, 10, GetScreenHeight(), GRUVBOX_FG);

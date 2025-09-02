@@ -64,6 +64,7 @@ public:
   int width = 25;
   int height = 120;
   int score = 0;
+  bool moving = false;
 
   void Draw() {
     DrawRectangle(x, y, width, height, GRUVBOX_RED);
@@ -73,10 +74,12 @@ public:
   void Update() {
     if (IsKeyDown(KEY_UP)) {
       y -= speed;
-    } 
-    
-    if (IsKeyDown(KEY_DOWN)) {
+      moving = true;
+    } else if (IsKeyDown(KEY_DOWN)) {
       y += speed;
+      moving = true;
+    } else {
+      moving = false;
     }
 
     if (y <= 0) {
@@ -95,9 +98,11 @@ public:
   void Update(int ball_y) {
     if (y + height/2 > ball_y) {
       y -= speed;
+      moving = true;
     }
     if (y + height/2 <= ball_y) {
       y += speed;
+      moving = true;
     }
 
     if (y >= GetScreenHeight() - height) {
