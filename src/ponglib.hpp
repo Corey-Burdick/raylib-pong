@@ -1,4 +1,6 @@
 #include <raylib.h>
+#include <random>
+#include <ctime>
 
 int playerScore = 0;
 int cpuScore = 0;
@@ -14,6 +16,7 @@ public:
     x = GetScreenWidth() / 2;
     y = GetScreenHeight() / 2;
     speed_x = speed_y = 7;
+    srand(time(NULL));
   }
 
   void Draw() {
@@ -41,7 +44,7 @@ public:
 
   void Reset(bool didPlayerScore) {
     x = GetScreenWidth() / 2;
-    y = GetScreenHeight() / 2;
+    y = rand() % GetScreenHeight() + 1;
     if (didPlayerScore) {
       speed_x = 6;
       speed_y = 6;
