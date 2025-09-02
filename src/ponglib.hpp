@@ -18,6 +18,8 @@ public:
 
   void Draw() {
     DrawCircle(x, y, radius, GRUVBOX_FG);
+    DrawCircle(x, y, radius / 1.5, GRUVBOX_BG);
+    DrawCircle(x, y, radius / 2, GRUVBOX_FG);
   }
 
   void Update() {
@@ -60,6 +62,7 @@ public:
 
   void Draw() {
     DrawRectangle(x, y, width, height, GRUVBOX_RED);
+    DrawRectangleRoundedLinesEx(Rectangle{x, y, width, height}, 0.4, 10, 3, GRUVBOX_FG);
   }
 
   void Update() {

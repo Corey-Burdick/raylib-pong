@@ -44,9 +44,15 @@ int main() {
     //Drawing
 
     ClearBackground(GRUVBOX_BG);
+    DrawCircle(0, GetScreenHeight() / 2, GetScreenWidth() / 4, GRUVBOX_DARKGREEN);
+    DrawCircle(0, GetScreenHeight() / 2, GetScreenWidth() / 5, GRUVBOX_GREEN);
+    DrawRectangle(GetScreenWidth() / 2 - 5, 0, 10, GetScreenHeight(), GRUVBOX_FG);
+    DrawCircle(GetScreenWidth(), GetScreenHeight() / 2, GetScreenWidth() / 4, GRUVBOX_DARKGREEN);
+    DrawCircle(GetScreenWidth(), GetScreenHeight() / 2, GetScreenWidth() / 5, GRUVBOX_GREEN);
+    DrawCircle(GetScreenWidth() / 2, GetScreenHeight() / 2, GetScreenWidth() / 7, GRUVBOX_FG);
+    DrawCircle(GetScreenWidth() / 2, GetScreenHeight() / 2, GetScreenWidth() / 8, GRUVBOX_BG);
     DrawText(TextFormat("%i", cpuScore), screen_width / 4, screen_height / 8, 40, GRUVBOX_RED);
     DrawText(TextFormat("%i", playerScore), screen_width / 4 + screen_width / 2, screen_height / 8, 40, GRUVBOX_RED);
-    DrawLine(screen_width / 2, 0, screen_width / 2, screen_height, GRUVBOX_FG);
     ball.Draw();
     player.Draw();
     cpu.Draw();
