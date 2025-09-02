@@ -6,11 +6,12 @@
 using namespace std;
 
 int main() {
-  const int screen_width = 1280;
-  const int screen_height = 800;
+  const int screen_width = 1920;
+  const int screen_height = 1080;
   printf("Starting the game.\n");
   InitWindow(screen_width, screen_height, "Pong");
   SetTargetFPS(60);
+  ToggleFullscreen();
   Ball ball = Ball(); 
   Paddle player = Paddle();
   //Paddle cpu = Paddle(10, screen_height / 2 - 60);
@@ -59,7 +60,7 @@ int main() {
                
     EndDrawing();
   }
-
+  ToggleFullscreen();
   CloseWindow();
 
   return 0;
